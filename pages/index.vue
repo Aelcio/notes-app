@@ -1,6 +1,8 @@
 <template>	
   <div class="container">
-    <div class="row">
+ <p v-if="$fetchState.pending" class="text-center">Carregando...</p>
+ <p v-else-if="$fetchState.error" class="text-center">Ocorreu um erro :(</p>
+    <div v-else class="row">
       <div v-for="nota of notas" :key="nota.id" class="col-md-3">
         <div class="card bg-warning my-3">
           <div class="card-body">
@@ -19,19 +21,12 @@
 export default {
   data () {
     return {
-      notas: [
-        {
-          id: 1,
-          titulo: "Título da nota",
-          descricao: "Descrição da nota"
-        },
-        {
-          id: 2,
-          titulo: "Título da nota 2",
-          descricao: null
-        }
-      ]
+      notas: []
     }
+  },
+  async fetch() {
+    const { data } = await this.$axios.get('notas/usuario/2');
+    this.notas = data;
   }
 }
 </script>
@@ -42,3 +37,4 @@ export default {
     border-radius: 10px;    
   }
 </style>
+  
