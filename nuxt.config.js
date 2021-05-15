@@ -37,8 +37,12 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/auth"
   ],
+  bootstrapVue: {
+    icons: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
@@ -49,11 +53,31 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: {url: "login", method: "post"},
+          login: { url: "login", method: "post"},
           user: { url: "usuario", method: "get", propertyName: false },
           logout: false
         }
       }
     }
+  },
+
+  router:{
+    routes:[
+      {
+        name: "index",
+        path: "/",
+        component:"pages/index.vue"
+      },
+      {
+        name: "nota-new",
+        path: "/nota",
+        component:"pages/newNota.vue"
+      },
+      {
+        name: "nota-edit",
+        path: "/nota/:id",
+        component:"pages/editNota.vue"
+      }
+    ]
   }
 }
