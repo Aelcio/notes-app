@@ -1,9 +1,8 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <div class="row">
       <div class="col-md-9">
-        <h1 class="noteapp">Notes App</h1>
-        <p class="paragrafo" variant="dark">
+       <p class="paragrafo" variant="dark">
           Informe os dados abaixo para acessar
         </p>
 

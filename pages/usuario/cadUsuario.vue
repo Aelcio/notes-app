@@ -1,26 +1,24 @@
 <template>
-  <div class="container-fluid">
+  <div >
     <div class="row">
-      <div class="col-md-9">
-        <h1 class="titulo">Cadastro Usuario</h1>
-        <p class="paragrafo">Informe os dados abaixo</p>
-
+      <div class="col-md-9">       
+        <p class="paragrafo">Informe os dados abaixo para se cadastrar</p>
         <b-form @submit.prevent="salvar">
-          <b-form-group label-align="right" label-cols="2" label="Nome">
-            <b-form-input v-model="nome" type="text" required></b-form-input>
+          <b-form-group>
+            <b-form-input v-model="nome" type="text" placeholder="Nome" required></b-form-input>
           </b-form-group>
 
-          <b-form-group label-align="right" label-cols="2" label="Email">
-            <b-form-input v-model="email" type="email" required></b-form-input>
+          <b-form-group>
+            <b-form-input v-model="email" type="email" placeholder="Email" required></b-form-input>
           </b-form-group>
-          <b-form-group label-align="right" label-cols="2" label="Senha">
-            <b-form-input v-model="senha" type="password"></b-form-input>
+          <b-form-group>
+            <b-form-input v-model="senha" type="password" placeholder="Senha"></b-form-input>
           </b-form-group>
-          <div class="row">
-            <div class="col-md-10 offset-md-2">
+          
+            
               <b-button block type="submit" variant="dark">Salvar</b-button>
-            </div>
-          </div>
+            
+          
         </b-form>
       </div>
     </div>
@@ -71,11 +69,11 @@ export default {
 
 <style>
 .titulo {
-  margin-left: 102px;
+  
   color: rgb(9, 138, 138);
 }
 .paragrafo {
-  margin-left: 102px;
+  
   color: rgb(9, 138, 138);
 }
 </style>
