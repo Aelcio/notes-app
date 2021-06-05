@@ -46,6 +46,9 @@
 <script>
 export default {
   layout: "home",
+  head:{
+    title: "Perfil - Notes App"
+  },
   data() {
     return {
       nome: null,

@@ -24,6 +24,9 @@
 
 <script>
 export default {
+  head:{
+    title: "Home - Notes App"
+  },
   computed: {
     usuario() {
       return this.$store.state.auth.user;

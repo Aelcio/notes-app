@@ -1,24 +1,33 @@
 <template>
   <b-input-group class="mb-2">
     <b-input-group-prepend is-text>
-      <b-form-checkbox value="1" unchecked-value="0" class="mr-n2" size="lg" v-model="concluida"/>
+      <b-form-checkbox 
+      :value="1" 
+      :unchecked-value="0" 
+      class="mr-n2" 
+      size="lg" 
+      v-model="concluida"/>
     </b-input-group-prepend>
     <b-form-input
       class="bg-warning border-0 text-dark"
+      :class="{'concluida': concluida == 1}"
+      placeholder="Novo Item" 
       v-model="descricao"
-      placeholder="Novo Item"
-    ></b-form-input>
+      @keyup.enter.prevent="change"
+      ></b-form-input>
   </b-input-group>
 </template>
 
 <script>
 export default {
-    name: "n-checklist",
+    name: "n-checklist-item",
     props: {
       concluida:{
         type: Number,
         default: 0,
-        required: true
+        required: true, validator: function (value){
+          return[0, 1].indexOf(value) !== -1
+        }
       },
       descricao: {
         type: String,
@@ -39,5 +48,8 @@ export default {
 .custom-control-input:checked ~ .custom-control-label::before {
   border-color: #343a40;
   background-color: #343a40;
+}
+.concluida {
+  text-decoration: line-through;
 }
 </style>

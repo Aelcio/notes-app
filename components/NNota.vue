@@ -61,8 +61,55 @@
 
 <script>
 export default {
-    name: "n-nota"
-}
+  name: "n-nota",
+  props: {
+    id: Number
+  },
+  data() {
+    return {
+      nota: {
+        titulo: null,
+        descricao: null,
+        checklists: [
+          {
+            descricao: "Teste 1",
+            concluida: 1,
+          },
+        ],
+        //tags: ["Tag 1", "Tag 2"],
+      },
+      checklist: {
+        descricao: "Test Check",
+        concluida: 0,
+      },
+    };
+  },
+  computed: {
+    notas() {
+      return this.$store.state.nota.list;
+    }
+  },
+ 
+  methods: {
+    async adicionar() {
+      const notaSaved = await this.$store.dispatch("nota/add", this.nota);
+      this.$router.push(`/nota/edit/${notaSaved.id}`);
+    },
+
+    async carregar() {
+      const { data } = await this.$axios.get(`notas/${this.id}`);
+
+      this.nota = data;
+      //this.nota = this.$store.state.nota.list.find(nota => nota.id == this.id);
+    }
+  },
+
+  async mounted () {
+    if(this.id) {
+      await this.carregar();
+    }    
+  }
+};
 </script>
 
 <style>

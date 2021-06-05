@@ -26,7 +26,7 @@ export const actions = {
     async add({ commit }, nota){
         const { data } = await this.$axios.post(`notas`, nota);
 
-        commit("ADD", nota);
+        commit("ADD", data);
 
         return data;
     }

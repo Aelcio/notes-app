@@ -31,6 +31,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -38,7 +39,8 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     "@nuxtjs/axios",
-    "@nuxtjs/auth"
+    "@nuxtjs/auth",
+    "@nuxtjs/onesignal"
   ],
   bootstrapVue: {
     icons: true
@@ -53,7 +55,7 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: "login", method: "post"},
+          login: { url: "login", method: "post" },
           user: { url: "usuario", method: "get", propertyName: false },
           logout: false
         }
@@ -61,23 +63,49 @@ export default {
     }
   },
 
-  router:{
-    routes:[
+  router: {
+    routes: [
       {
         name: "index",
         path: "/",
-        component:"pages/index.vue"
+        component: "pages/index.vue"
       },
       {
         name: "nota-new",
         path: "/nota",
-        component:"pages/newNota.vue"
+        component: "pages/newNota.vue"
       },
       {
         name: "nota-edit",
         path: "/nota/:id",
-        component:"pages/editNota.vue"
+        component: "pages/editNota.vue"
       }
     ]
-  }
+  },
+
+   pwa: {
+     icon: {
+      source: "icon.png"
+     },
+    meta: {
+      theme_color: "#FCC344"
+    },
+    manifest: {
+       name: "Notes App TADS",
+       short_name: "Notes App",
+       description: "Aplicativo de Notas da Aula de Programação Web",
+       lang: "pt-br"
+     }
+   },
+
+   oneSignal: {
+     init: {
+       appId: "64f13c0b-c81a-44c0-8d43-da613c6e34c9",
+       allowLocalHostAsSecureOrigin: true,
+       cdn: true,
+       welcomeNotification: {
+         disable: true
+       }
+     }
+   }
 }

@@ -1,10 +1,12 @@
 <template>
-  <h1>Editando nota {{$route.params.id}}</h1>
+  <n-nota :id="$route.params.id"></n-nota>
 </template>
 
 <script>
+import NNota from '~/components/NNota.vue';
 export default {
-
+  components: { NNota },
+  layout: "home",  
 };
 </script>
 

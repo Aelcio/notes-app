@@ -27,6 +27,9 @@
 <script>
 export default {
   layout: "telausuario",
+  head:{
+    title: "Registro - Notes App"
+  },
   data() {
     return {
       nome: null,
