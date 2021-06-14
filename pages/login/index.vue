@@ -25,8 +25,8 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-button block type="submit" variant="dark">Acessar</b-button>
-          <a href="usuario/cadusuario">Cadastre-se</a>
+          <b-button v-if ="$nuxt.isOnline" block type="submit" variant="dark">Acessar</b-button>
+          <a  v-if ="$nuxt.isOnline" to="usuario/cadusuario">Cadastre-se</a>
         </b-form>
       </div>
     </div>
@@ -36,6 +36,7 @@
 <script>
 export default {
   layout: "telausuario",
+  transitions:'fade',
   head:{
     title: "Login - Notes App"
   },

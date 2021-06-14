@@ -1,13 +1,19 @@
 <template>
   <div>
     <div class="text-center">
-       <b-button to = "nota/new" variant="dark" size="lg" class="my-5">Nova Nota</b-button>
+       <b-button 
+       v-show="$nuxt.isOnline"
+       to = "nota/new" 
+       variant="dark" 
+       size="lg" 
+       class="my-5"
+       >Nova Nota</b-button>
     </div>
     <p v-if="$fetchState.pending" class="text-center">Carregando...</p>
     <p v-else-if="$fetchState.error" class="text-center">Ocorreu um erro :(</p>
     <div v-else class="row">
       <div v-for="nota of notas" :key="nota.id" class="col-md-3">
-        <div class="card bg-warning my-3">
+        <div class="card bg-warning my-3" @click="editar(nota.id)">
           <div class="card-body">
             <h5 class="card-title">{{ nota.titulo }}</h5>
             <p v-if="nota.descricao" class="card-text">
@@ -38,6 +44,11 @@ export default {
       return this.$store.state.nota.list;
     },
   },
+  methods: {
+    editar(id) {
+      this.$router.push(`nota/edit/${id}`);
+    }
+  }
 };
 </script>
 
@@ -45,6 +56,7 @@ export default {
 .card {
   min-height: 15rem;
   border-radius: 10px;
+  cursor: pointer;
 }
 </style>
   

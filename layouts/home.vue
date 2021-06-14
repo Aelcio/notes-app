@@ -7,8 +7,8 @@
       <b-collapse id="notesBar" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown id="1" :text="primeiroNome" right>
-            <b-dropdown-item href="perfil">Perfil</b-dropdown-item>
-            <b-dropdown-item href="#" @click.prevent="logout"
+            <b-dropdown-item to="perfil">Perfil</b-dropdown-item>
+            <b-dropdown-item to="#" @click.prevent="logout"
               >Sair</b-dropdown-item
             >
           </b-nav-item-dropdown>
@@ -17,15 +17,18 @@
     </b-navbar>
 
     <div class="container">
+      <offline-alert v-if="$nuxt.isOffline" />
       <Nuxt />
     </div>
   </div>
 </template>
-
+ 
 <script>
+import OfflineAlert from '~/components/OfflineAlert.vue';
 export default {
-  head:{
-    title: "Home - Notes App"
+  components: { OfflineAlert },
+  head: {
+    title: "Home - Notes App",
   },
   computed: {
     usuario() {
@@ -45,6 +48,9 @@ export default {
       await this.$auth.logout();
       this.$router.push("/login");
     },
+  },
+  mounted() {
+    console.log(this.$nuxt.isOffline);
   },
 };
 </script>

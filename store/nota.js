@@ -41,6 +41,7 @@ export const actions = {
   },
   async edit({ commit }, nota) {
     try {
+      console.log(nota)
       const { data } = await this.$axios.put(`notas/${nota.id}`, nota);
 
       commit("SET", data);

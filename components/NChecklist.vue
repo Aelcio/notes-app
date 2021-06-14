@@ -2,7 +2,7 @@
   <div>
     <ul class="list-unstyled">
       <li v-for="(item, index) of value" :key="index">
-        <n-checklist-item v-model="value[index]"></n-checklist-item>
+        <n-checklist-item v-model="value[index]"> </n-checklist-item>
       </li>
       <li>
         <n-checklist-item
@@ -11,7 +11,6 @@
         ></n-checklist-item>
       </li>
     </ul>
-
     <p class="text-muted">
       <small>{{ mensagemNumeroItens }} </small>
     </p>
@@ -22,14 +21,14 @@
 export default {
   name: "n-checklist",
   props: {
-    value: Array
+    value: Array,
   },
   data() {
     return {
       checklist: {
         descricao: null,
-        concluida: 0
-      }
+        concluida: 0,
+      },
     };
   },
   computed: {
@@ -40,17 +39,18 @@ export default {
       return this.value.length > 1
         ? `${this.numeroItens} itens adicionados`
         : `${this.numeroItens} item adicionado`;
-    }
+    },
   },
   methods: {
     adicionar() {
       this.value.push(this.checklist);
+      
       this.checklist = {
         descricao: null,
-        concluida: 0
+        concluida: 0,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 

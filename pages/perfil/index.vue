@@ -46,6 +46,7 @@
 <script>
 export default {
   layout: "home",
+  transitions:'fade',
   head:{
     title: "Perfil - Notes App"
   },

@@ -14,13 +14,15 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/icon.png' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
+  css: ['~/assets/css/main.css'
   ],
+
+  pageTransition: 'fade',
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -46,6 +48,8 @@ export default {
     icons: true
   },
 
+  
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   axios: {
@@ -63,25 +67,25 @@ export default {
     }
   },
 
-  router: {
-    routes: [
-      {
-        name: "index",
-        path: "/",
-        component: "pages/index.vue"
-      },
-      {
-        name: "nota-new",
-        path: "/nota",
-        component: "pages/newNota.vue"
-      },
-      {
-        name: "nota-edit",
-        path: "/nota/:id",
-        component: "pages/editNota.vue"
-      }
-    ]
-  },
+  // router: {
+  //   routes: [
+  //     {
+  //       name: "index",
+  //       path: "/",
+  //       component: "pages/index.vue"
+  //     },
+  //     {
+  //       name: "nota-new",
+  //       path: "/nota",
+  //       component: "pages/newNota.vue"
+  //     },
+  //     {
+  //       name: "nota-edit",
+  //       path: "/nota/:id",
+  //       component: "pages/editNota.vue"
+  //     }
+  //   ]
+  // },
 
    pwa: {
      icon: {

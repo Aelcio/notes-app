@@ -23,7 +23,7 @@
 export default {
   name: "n-checklist-item",
   props: {
-    value: Array,
+    value: Object,
   },
   methods: {
     async emitirEventoNovoItem() {

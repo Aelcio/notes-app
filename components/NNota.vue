@@ -98,7 +98,7 @@ export default {
       this.$router.push(`/nota/edit/${notaSaved.id}`);
     },
     async editar() {
-      await this.$store.dispatch("nota/edit", this.nota);
+      const notaSaved = await this.$store.dispatch("nota/edit", this.nota);
       await this.carregar();
     },
     async carregar() {
