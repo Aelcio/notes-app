@@ -3,10 +3,16 @@
 </template>
 
 <script>
-import NNota from '~/components/NNota.vue';
+import NNota from "~/components/NNota.vue";
 export default {
   components: { NNota },
-  layout: "home",  
+  layout: "home",
+
+  computed: {
+    notas() {
+      return this.$store.state.nota.list;
+    },
+  },
 };
 </script>
 

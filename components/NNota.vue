@@ -76,7 +76,7 @@ export default {
         if (this.compararNotas(value, oldValue)) {
           if (!this.esperandoAlteracao) {
             setTimeout(() => {
-              this.id ? this.editar() : this.adicionar();
+              this.id ? this.editar(this.$nuxt.isOnline) : this.adicionar();
               this.esperandoAlteracao = false;
             }, 3000);
           }
@@ -97,9 +97,15 @@ export default {
       const notaSaved = await this.$store.dispatch("nota/add", this.nota);
       this.$router.push(`/nota/edit/${notaSaved.id}`);
     },
-    async editar() {
-      const notaSaved = await this.$store.dispatch("nota/edit", this.nota);
-      await this.carregar();
+    async editar(online) {
+      const dado = {
+        nota: this.nota,
+        isOnline: online
+      }
+      await this.$store.dispatch("nota/edit", dado);
+      if (online) {
+        await this.carregar();
+      }
     },
     async carregar() {
       const { data } = await this.$axios.get(`notas/${this.id}`);
